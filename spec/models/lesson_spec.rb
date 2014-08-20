@@ -2,6 +2,7 @@ describe Lesson do
   it { should validate_presence_of :name }
   it { should validate_presence_of :text }
   it { should validate_presence_of :number}
+  it { should belong_to :section}
 
   describe 'next' do
     it 'returns the lesson with the next-highest number than the current lesson' do
