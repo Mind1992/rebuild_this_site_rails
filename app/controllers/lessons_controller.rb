@@ -10,12 +10,12 @@ class LessonsController < ApplicationController
   end
 
   def new
-    section = Section.find(params[:section_id])
-    @lesson = section.lessons.new
+    @lesson = Lesson.new
     render('lessons/new.html.erb')
   end
 
   def create
+    binding.pry
     @lesson = Lesson.new(params[:lesson])
     if @lesson.save
       redirect_to("/lessons/#{@lesson.id}")
@@ -40,6 +40,6 @@ class LessonsController < ApplicationController
   def destroy
     @lesson = Lesson.find(params[:id])
     @lesson.destroy
-    redirect_to("/lessons")
+    redirect_to("lessons/#{@lesson.id}")
   end
 end
